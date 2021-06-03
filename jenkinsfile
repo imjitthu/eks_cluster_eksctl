@@ -23,7 +23,7 @@ pipeline {
             }
             steps {
                 sh '''
-                eksctl delete cluster -f clustern.yml
+                eksctl delete cluster -f cluster.yml
                 '''
             }
         }
