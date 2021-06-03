@@ -2,8 +2,15 @@ pipeline {
 
     agent any
 
+    parameters {
+        choice(name: 'EKS_Cluster', choices: ['Create', 'Delete',], description: 'Pick option')
+    }
+
     stages {
         stage ('Creating Eks Cluster') {
+            when {
+                expression {params.EKS_Cluster == "Create"}
+            }
             steps {
                 sh '''
                 eksctl create cluster -f cluster.yml
@@ -11,6 +18,9 @@ pipeline {
             }
         }
         stage ('Deleting Eks Cluster') {
+            when {
+                expression {params.EKS_Cluster == "Delete"}
+            }
             steps {
                 sh '''
                 eksctl delete cluster -f clustern.yml
@@ -19,5 +29,3 @@ pipeline {
         }
     }
 }
-
-//eksctl create cluster --name roboshop --region us-east-1 --managed -node-zones us-east-1d, us-east-1f --zones us-east-1d, us-east-1f
