@@ -7,8 +7,8 @@ metadata:
 
 managednodeGroups:
   - name: rs-ng-1
-    instanceType: t2.medium
-    spot: true
+    instanceType: t2.micro
+    #spot: true
     #minimumSize: 1
     #maximumSize: 2
     desiredCapacity: 1
@@ -17,8 +17,8 @@ managednodeGroups:
       allow: true # will use ~/.ssh/id_rsa.pub as the default ssh key
     availabilityZones: ["us-east-1b"]
   - name: rs-ng-2
-    instanceType: t2.medium
-    spot: true
+    instanceType: t2.micro
+    #spot: true
     #minimumSize: 1
     #maximumSize: 2
     desiredCapacity: 1
