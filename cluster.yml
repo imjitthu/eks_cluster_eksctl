@@ -8,9 +8,6 @@ metadata:
 nodeGroups:
   - name: rs-ng-1
     instanceType: t2.micro
-    #spot: true
-    #minimumSize: 1
-    #maximumSize: 2
     desiredCapacity: 1
     volumeSize: 16
     ssh:
@@ -18,9 +15,6 @@ nodeGroups:
     availabilityZones: ["us-east-1b"]
   - name: rs-ng-2
     instanceType: t2.micro
-    #spot: true
-    #minimumSize: 1
-    #maximumSize: 2
     desiredCapacity: 1
     volumeSize: 16
     ssh:
