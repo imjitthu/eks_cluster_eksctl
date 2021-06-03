@@ -9,7 +9,7 @@ managednodeGroups:
   - name: rs-ng-1
     instanceType: t2.medium
     spot: true
-    minimumSize: 1
+    #minimumSize: 1
     #maximumSize: 2
     desiredCapacity: 1
     volumeSize: 16
@@ -19,7 +19,7 @@ managednodeGroups:
   - name: rs-ng-2
     instanceType: t2.medium
     spot: true
-    minimumSize: 1
+    #minimumSize: 1
     #maximumSize: 2
     desiredCapacity: 1
     volumeSize: 16
