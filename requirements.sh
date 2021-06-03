@@ -36,5 +36,6 @@ mysql -h hostname -u user -pPassword # login to the mysql host
 
 helm ls #get all installed by HELM
 
-kubectl run debug --image=centos:7 sleep 100 #create workstation in Kubernetes
+kubectl run workstation --image=centos:7 sleep 100 #create workstation in Kubernetes
+kubectl exec -it workstation /bin/bash #enter workstation shell and here we can do our lab
 
