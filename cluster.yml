@@ -8,15 +8,12 @@ metadata:
 nodeGroups:
   - name: rs-ng-1
     instanceType: t2.micro
-    spot: true
     desiredCapacity: 1
     volumeSize: 16
     ssh:
       allow: true # will use ~/.ssh/id_rsa.pub as the default ssh key
     availabilityZones: ["us-east-1b"]
   - name: rs-ng-2
-    instanceType: t2.micro
-    spot: true
     desiredCapacity: 1
     volumeSize: 16
     ssh:
