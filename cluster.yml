@@ -22,4 +22,5 @@ nodeGroups:
       #publicKeyPath: ~/.ssh/ec2_id_rsa.pub
 availabilityZones: ['us-east-1a', 'us-east-1b', 'us-east-1c', 'us-east-1d']
 
-//eksctl utils update-cluster-logging --enable-types={SPECIFY-YOUR-LOG-TYPES-HERE (e.g. all)} --region=us-east-1 --cluster=test enable cloudwaatch logging
+#eksctl utils update-cluster-logging --enable-types={SPECIFY-YOUR-LOG-TYPES-HERE (e.g. all)} --region=us-east-1 --cluster=test enable cloudwaatch loging
+#kubeconfig will be aved as "/root/.kube/config"
