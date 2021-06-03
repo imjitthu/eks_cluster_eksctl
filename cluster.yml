@@ -17,4 +17,5 @@ nodeGroups:
     desiredCapacity: 2
     volumeSize: 16
     ssh:
-      publicKeyPath: ~/.ssh/ec2_id_rsa.pub
+      allow: true
+      #publicKeyPath: ~/.ssh/ec2_id_rsa.pub
