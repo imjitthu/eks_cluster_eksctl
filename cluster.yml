@@ -10,7 +10,7 @@ managednodeGroups:
     instanceType: t2.medium
     spot: true
     minimumSize: 1
-    maximumSize: 2
+    #maximumSize: 2
     desiredCapacity: 1
     volumeSize: 16
     ssh:
@@ -20,7 +20,7 @@ managednodeGroups:
     instanceType: t2.medium
     spot: true
     minimumSize: 1
-    maximumSize: 2
+    #maximumSize: 2
     desiredCapacity: 1
     volumeSize: 16
     ssh:
