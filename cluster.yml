@@ -7,14 +7,14 @@ metadata:
 
 nodeGroups:
   - name: rs-ng-1
-    instanceType: m5.large
-    desiredCapacity: 10
-    volumeSize: 80
+    instanceType: t2.medium
+    desiredCapacity: 2
+    volumeSize: 16
     ssh:
       allow: true # will use ~/.ssh/id_rsa.pub as the default ssh key
   - name: rs-ng-2
-    instanceType: m5.xlarge
+    instanceType: t2.medium
     desiredCapacity: 2
-    volumeSize: 100
+    volumeSize: 16
     ssh:
       publicKeyPath: ~/.ssh/ec2_id_rsa.pub
