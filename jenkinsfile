@@ -6,14 +6,14 @@ pipeline {
         stage ('Creating Eks Cluster') {
             steps {
                 sh '''
-                eksctl create cluster -f cluster.yaml
+                eksctl create cluster -f cluster.yml
                 '''
             }
         }
         stage ('Deleting Eks Cluster') {
             steps {
                 sh '''
-                eksctl delete cluster -f clustern.yaml
+                eksctl delete cluster -f clustern.yml
                 '''
             }
         }
