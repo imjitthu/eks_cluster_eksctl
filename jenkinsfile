@@ -1,0 +1,21 @@
+pipeline {
+
+    agent any
+
+    stages {
+        stage ('Creating Eks Cluster') {
+            steps {
+                sh '''
+                eksctl create cluster --name roboshop --region us-east-1 --managed -node-zones us-east-1d, us-east-1f --zones us-east-1d, us-east-1f
+                '''
+            }
+        }
+        stage ('Deleting Eks Cluster') {
+            steps {
+                sh '''
+                eksctl delete cluster
+                '''
+            }
+        }
+    }
+}
