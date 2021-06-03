@@ -5,7 +5,7 @@ metadata:
   name: test
   region: us-east-1
 
-managednodeGroups:
+nodeGroups:
   - name: rs-ng-1
     instanceType: t2.micro
     #spot: true
