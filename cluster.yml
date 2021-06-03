@@ -12,7 +12,6 @@ nodeGroups:
     volumeSize: 16
     ssh:
       allow: true # will use ~/.ssh/id_rsa.pub as the default ssh key
-    #availabilityZones: ['us-east-1a', 'us-east-1b', 'us-east-1c', 'us-east-1d']
   - name: rs-ng-2
     instanceType: t2.medium
     desiredCapacity: 1
