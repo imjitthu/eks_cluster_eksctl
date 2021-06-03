@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage ('Creating Eks Cluster') {
             when {
-                expression {params.EKS_Cluster == "Create"}
+                expression {params.EKS_Cluster == 'Create'}
             }
             steps {
                 sh '''
@@ -19,7 +19,7 @@ pipeline {
         }
         stage ('Deleting Eks Cluster') {
             when {
-                expression {params.EKS_Cluster == "Delete"}
+                expression {params.EKS_Cluster == 'Delete'}
             }
             steps {
                 sh '''
