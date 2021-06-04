@@ -32,13 +32,11 @@ pipeline {
                 expression {params.EKS_Cluster == 'Create'}
             }
             steps {
-            sh '''
-            helm repo add stable https://charts.helm.sh/stable
-            helm install redis stable/redis --set usePassword=false
-            helm install mongodb bitnami/mongodb --set auth.enabled=false
-            helm install rabbitmq bitnami/rabbitmq
-            helm install mysql stable/mysql
-            '''
+            sh "helm repo add stable https://charts.helm.sh/stable"
+            sh "helm install redis stable/redis --set usePassword=false"
+            sh "helm install mongodb bitnami/mongodb --set auth.enabled=false"
+            sh "helm install rabbitmq bitnami/rabbitmq"
+            sh "helm install mysql stable/mysql"
             }
         }
     }
