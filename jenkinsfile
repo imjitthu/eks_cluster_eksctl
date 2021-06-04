@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     parameters {
-        choice(name: 'EKS_Cluster', choices: ['Create', 'Delete',], description: 'Pick option')
+        choice(name: 'EKS_Cluster', choices: ['Create', 'Delete', 'Install DB & Cache',], description: 'Pick option')
                 }
 
     stages {
@@ -29,7 +29,7 @@ pipeline {
         }
         stage ('Installing DB and Cache Components') {
             when {
-                expression {params.EKS_Cluster == 'Create'}
+                expression {params.EKS_Cluster == 'Install DB & Cache'}
             }
             steps {
             sh "helm repo add stable https://charts.helm.sh/stable"
