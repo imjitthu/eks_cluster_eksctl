@@ -5,8 +5,10 @@ test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew
 test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
 echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
 
-
 brew install k9s #install k9s CLI centos
+
+kubectl rollout restart deployment [deployment_name] #restart deployment
+rollout restart pods [pod_name] #restart pods
 
 helm repo add stable https://charts.helm.sh/stable #add HELM stable repo
 
@@ -18,6 +20,18 @@ helm uninstall mongodb #uninstall mongodb
 mongod -h hostname < catalogue.js #import catalogue databese into mongodb
 mongod -h hostname < users.js #import users database into mongodb
 
+echo '[mongodb-org-4.2]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc' >/etc/yum.repos.d/mongodb.repo
+
+yum install -y mongodb-org
+
+https://github.com/imjitthu/tfas-mongo/blob/master/roles/mongo/files/catalogue.js
+https://github.com/imjitthu/tfas-mongo/blob/master/roles/mongo/files/users.js
+
 helm install rabbitmq bitnami/rabbitmq #install rabbitmq
 heml uninstall rabbitmq #uninstall rabbitmq
 rabbitmqctl add_user roboshop roboshop123; #add user for rabbitmq
@@ -26,6 +40,7 @@ rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" #set permissions for us
 
 helm install mysql stable/mysql #install mysql
 helm uninstall mysql #uninstall myql
+https://github.com/imjitthu/tfas-mysql/blob/master/roles/mysql/files/shipping.zip
 mysql -h hostname -u user -pPassword < shipping.sql
 kubectl get secrets mysql -o yaml #get the passwod encrypted
   mysql-password: blNJdHdFcDQycg== #encrypted password
