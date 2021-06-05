@@ -17,8 +17,8 @@ helm uninstall redis #uninstall redis
 
 helm install mongodb bitnami/mongodb --set auth.enabled=false #install mongodb without authentication
 helm uninstall mongodb #uninstall mongodb
-mongod -h hostname < catalogue.js #import catalogue databese into mongodb
-mongod -h hostname < users.js #import users database into mongodb
+mongo --host mongodb <catalogue.js #import catalogue databese into mongodb
+mongo --host mongodb <users.js #import users database into mongodb
 
 echo '[mongodb-org-4.2]
 name=MongoDB Repository
@@ -37,6 +37,7 @@ heml uninstall rabbitmq #uninstall rabbitmq
 rabbitmqctl add_user roboshop roboshop123; #add user for rabbitmq
 rabbitmqctl set_user_tags roboshop administrator; #set tags for user
 rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" #set permissions for user
+rabbitmqctl add_user roboshop roboshop123; rabbitmqctl set_user_tags roboshop administrator; rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
 
 helm install mysql stable/mysql #install mysql
 helm uninstall mysql #uninstall myql
