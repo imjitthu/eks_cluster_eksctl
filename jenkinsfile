@@ -47,7 +47,7 @@ pipeline {
                 build 'Rs-Docker/cart'
                 build 'Rs-Docker/catalogue'
                 build 'Rs-Docker/shipping'
-                build 'Rs-Docker/users'
+                build 'Rs-Docker/user'
                 build 'Rs-Docker/payment'
                 build job: 'Rs-Docker/WorkStation', parameters: [string(name: 'Workstation', value: 'Create POD')]
                 build 'Rs-Docker/frontend'
