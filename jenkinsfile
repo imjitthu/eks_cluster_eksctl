@@ -34,7 +34,7 @@ pipeline {
             steps {
             sh "helm repo add stable https://charts.helm.sh/stable"
             sh "helm repo add prometheus-community https://prometheus-community.github.io/helm-charts"
-            sh "helm repo add elastic https://elastic.co"
+            sh "helm repo add elastic https://helm.elastic.co"
             sh "helm install prometheus prometheus-community/kube-prometheus-stack"
             sh "helm install grafana stable/grafana"
             sh "helm install redis stable/redis --set usePassword=false"
