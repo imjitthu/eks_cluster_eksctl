@@ -61,7 +61,7 @@ helm search repo prometheus-community #search all the available packages in prom
 
 helm install grafana stable/grafana #install grafana 
 
-helm repo add elastic https://elastic.co #add elastic repo for HELM
+helm repo add elastic https://helm.elastic.co #add elastic repo for HELM
 helm install filebeat elastic/filebeat #install filebeat from helm
 
 
