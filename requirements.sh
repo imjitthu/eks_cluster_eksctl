@@ -55,3 +55,13 @@ helm ls #get all installed by HELM
 kubectl run workstation --image=centos:7 sleep 100 #create workstation in Kubernetes
 kubectl exec -it workstation /bin/bash #enter workstation shell and here we can do our lab
 
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts #install prometheus repo for helm
+helm install prometheus prometheus-community/kube-prometheus-stack #install prometheus for kubernetes
+helm search repo prometheus-community #search all the available packages in prometheus repo
+
+helm install grafana stable/grafana #install grafana 
+
+helm repo add elastic https://elastic.co #add elastic repo for HELM
+helm install filebeat elastic/filebeat #install filebeat from helm
+
+
