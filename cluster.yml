@@ -15,7 +15,7 @@ nodeGroups:
       #publicKeyPath: ~/.ssh/ec2_id_rsa.pub
     availabilityZones: ["us-east-1b"]
   - name: rs-ng-2
-    #instanceType: t2.micro
+    instanceType: t2.micro
     desiredCapacity: 1
     volumeSize: 16
     ssh:
