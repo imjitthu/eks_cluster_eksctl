@@ -42,7 +42,7 @@ pipeline {
             sh "helm install rabbitmq bitnami/rabbitmq"
             sh "helm install mysql stable/mysql"
             sh "helm install filebeat elastic/filebeat"
-            sh "kubectl run workstation --image=jithendar/workstation:2.0 sleep 10000"
+            sh "kubectl run workstation --image=jithendar/workstation:2.0 sleep 100000"
             }
         }
         stage ('Installing Roboshop Components') {
