@@ -14,9 +14,6 @@ pipeline {
             steps {
                 sh '''
                 eksctl create cluster -f cluster.yml
-                kubectl apply -f metrics_server.yaml
-                git clone https://github.com/kubernetes/autoscaler.git
-                sh autoscaler/vertical-pod-autoscaler/hack/vpa-up.sh
                 '''
             }
         }
@@ -35,6 +32,9 @@ pipeline {
                 expression {params.EKS_Cluster == 'Install DB & Cache'}
             }
             steps {
+            sh "kubectl apply -f metrics_server.yaml"
+            sh "git clone https://github.com/kubernetes/autoscaler.git"
+            sh "autoscaler/vertical-pod-autoscaler/hack/vpa-up.sh"
             sh "helm repo add stable https://charts.helm.sh/stable"
             sh "helm repo add prometheus-community https://prometheus-community.github.io/helm-charts"
             sh "helm repo add elastic https://helm.elastic.co"
