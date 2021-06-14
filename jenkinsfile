@@ -50,7 +50,7 @@ pipeline {
                 expression {params.EKS_Cluster == 'Install Components'}
             }
             steps {
-            //sh "kubectl apply -f metrics_server.yaml"
+            sh "kubectl apply -f metrics_server.yaml"
             git 'https://github.com/kubernetes/autoscaler.git'
             sh "sh autoscaler/vertical-pod-autoscaler/hack/vpa-up.sh"
             build 'Rs-Docker/cart'
