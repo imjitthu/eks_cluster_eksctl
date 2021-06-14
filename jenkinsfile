@@ -52,6 +52,7 @@ pipeline {
             steps {
             sh "kubectl apply -f metrics_server.yaml"
             git 'https://github.com/kubernetes/autoscaler.git'
+            sh "pwd"
             sh "sh autoscaler/vertical-pod-autoscaler/hack/vpa-up.sh"
             build 'Rs-Docker/cart'
             build 'Rs-Docker/catalogue'
