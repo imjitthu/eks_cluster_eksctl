@@ -14,6 +14,7 @@ pipeline {
             steps {
                 sh '''
                 eksctl create cluster -f cluster.yml
+                kubectl apply -f metrics_server.yaml
                 '''
             }
         }
