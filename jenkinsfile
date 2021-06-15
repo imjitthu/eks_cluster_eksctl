@@ -45,7 +45,7 @@ pipeline {
             sh "kubectl run workstation --image=jithendar/workstation:2.0 sleep 100000"
             }
         }
-        stage ('Installing Roboshop Components') {
+        stage ('Installing VPA') {
             when {
                 expression {params.EKS_Cluster == 'Install Components'}
             }
