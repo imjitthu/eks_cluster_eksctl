@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     parameters {
-        choice(name: 'EKS_Cluster', choices: ['Create', 'Delete', 'Install DB & Cache', 'Install Components'], description: 'Pick option')
+        choice(name: 'EKS_Cluster', choices: ['Create', 'Delete', 'Install DB & Cache', 'Install Components', 'Install VPA'], description: 'Pick option')
                 }
 
     stages {
@@ -47,19 +47,26 @@ pipeline {
         }
         stage ('Installing VPA') {
             when {
-                expression {params.EKS_Cluster == 'Install Components'}
+                expression {params.EKS_Cluster == 'Install VPA'}
             }
             steps {
             sh "kubectl apply -f metrics_server.yaml"
             git 'https://github.com/kubernetes/autoscaler.git'
             sh "sh vertical-pod-autoscaler/hack/vpa-up.sh"
-            // build 'Rs-Docker/cart'
-            // build 'Rs-Docker/catalogue'
-            // build 'Rs-Docker/shipping'
-            // build 'Rs-Docker/user'
-            // build 'Rs-Docker/payment'
-            // build 'Rs-Docker/frontend'
             }
+       }
+       stage ('Installing Robosho Components') {
+           when {
+               expression {params.EKS_Cluster == 'Install Components'}
+           }
+           steps {
+            build 'Rs-Docker/cart'
+            build 'Rs-Docker/catalogue'
+            build 'Rs-Docker/shipping'
+            build 'Rs-Docker/user'
+            build 'Rs-Docker/payment'
+            build 'Rs-Docker/frontend'
+           }
        } 
     }
 }
