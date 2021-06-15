@@ -61,11 +61,11 @@ pipeline {
            }
            steps {
             build 'Rs-Docker/cart'
-            build 'Rs-Docker/catalogue'
-            build 'Rs-Docker/shipping'
-            build 'Rs-Docker/user'
-            build 'Rs-Docker/payment'
-            build 'Rs-Docker/frontend'
+            // build 'Rs-Docker/catalogue'
+            // build 'Rs-Docker/shipping'
+            // build 'Rs-Docker/user'
+            // build 'Rs-Docker/payment'
+            // build 'Rs-Docker/frontend'
            }
        } 
     }
