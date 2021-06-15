@@ -38,7 +38,7 @@ rabbitmqctl add_user roboshop roboshop123; rabbitmqctl set_user_tags roboshop ad
 helm install mysql stable/mysql #install mysql
 helm uninstall mysql #uninstall myql
 https://github.com/imjitthu/tfas-mysql/blob/master/roles/mysql/files/shipping.zip
-mysql -h hostname -u user -pPassword < shipping.sql
+mysql --host mysql -u root -pbIdJe9P3QU < shipping.sql
 kubectl get secrets mysql -o yaml #get the passwod encrypted
   mysql-password: blNJdHdFcDQycg== #encrypted password
   mysql-root-password: aVFxMDRDSjhPNA== #encrypted password
