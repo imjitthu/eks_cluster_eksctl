@@ -32,15 +32,15 @@ pipeline {
             }
             steps {
             sh "helm repo add stable https://charts.helm.sh/stable"
-            sh "helm repo add prometheus-community https://prometheus-community.github.io/helm-charts"
-            sh "helm repo add elastic https://helm.elastic.co"
-            sh "helm install prometheus prometheus-community/kube-prometheus-stack"
-            sh "helm install grafana stable/grafana"
+            //sh "helm repo add prometheus-community https://prometheus-community.github.io/helm-charts"
+            //sh "helm repo add elastic https://helm.elastic.co"
+            //sh "helm install prometheus prometheus-community/kube-prometheus-stack"
+            //sh "helm install grafana stable/grafana"
             sh "helm install redis stable/redis --set usePassword=false"
             sh "helm install mongodb bitnami/mongodb --set auth.enabled=false"
             sh "helm install rabbitmq bitnami/rabbitmq"
             sh "helm install mysql stable/mysql"
-            sh "helm install filebeat elastic/filebeat"
+            //sh "helm install filebeat elastic/filebeat"
             sh "kubectl run workstation --image=jithendar/workstation:2.0 sleep 100000"
             }
         }
@@ -60,11 +60,11 @@ pipeline {
            }
            steps {
             build 'Rs-Docker/cart'
-            // build 'Rs-Docker/catalogue'
-            // build 'Rs-Docker/shipping'
-            // build 'Rs-Docker/user'
-            // build 'Rs-Docker/payment'
-            // build 'Rs-Docker/frontend'
+            build 'Rs-Docker/catalogue'
+            build 'Rs-Docker/shipping'
+            build 'Rs-Docker/user'
+            build 'Rs-Docker/payment'
+            build 'Rs-Docker/frontend'
            }
        } 
     }
