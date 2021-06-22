@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: v1alpha5.ClusterConfig
 kind: ServiceAccount
 metadata:
   name: system:anonymous
