@@ -2,14 +2,10 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: test-role
-rules:
-- apiGroups:
-  - authorization.k8s.io
-  resources:
-  - selfsubjectaccessreviews
-  - selfsubjectrulesreviews
+  apiGroups:
+    - authorization.k8s.io
   verbs:
-  - create
+    - create
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
