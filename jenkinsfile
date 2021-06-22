@@ -13,7 +13,7 @@ pipeline {
             }
             steps {
                 sh "eksctl create cluster -f cluster.yml"
-                sh "kubectl apply -f role.yml"
+                //sh "kubectl apply -f role.yml"
             }
         }
         stage ('Deleting Eks Cluster') {
