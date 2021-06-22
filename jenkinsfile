@@ -13,7 +13,7 @@ pipeline {
             }
             steps {
                 sh '''
-                eksctl create cluster -f rolebibding.yml
+                eksctl create cluster -f rolebinding.yml
                 '''
             }
         }
