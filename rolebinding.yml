@@ -1,13 +1,13 @@
 apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
+kind: ClusterRoleBinding
 metadata:
-  name: jenkins-deployment
-  namespace: default
+   name: jenkins-deployment
+   namespace: default
+roleRef:
+   apiGroup: rbac.authorization.k8s.io
+   kind: ClusterRole
+   name: cluster-admin
 subjects:
 - kind: User
-  name: jithendar
-  apiGroup: rbac.authorization.k8s.io
-roleRef:
-  kind: Role
-  name: cluster-admin
-  apiGroup: rbac.authorization.k8s.io
+  name: system:anonymous
+  namespace: default
