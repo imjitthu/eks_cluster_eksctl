@@ -21,5 +21,5 @@ roleRef:
    name: test-role
 subjects:
 - kind: User
-  name: system:anonymous
+  name: anonymous
   namespace: default
