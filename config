@@ -1,0 +1,30 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM1ekNDQWMrZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJeE1EWXlNakF6TkRjeU9Gb1hEVE14TURZeU1EQXpORGN5T0Zvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBS2FCCjA4WkFXZG9sbkh5TElidzNIUWxSYm9LT012OWU4VHI0TEh4U1NRN21zYTJJTHJLeU5PNWNndHFFRUhVLzdwQjIKSUJPbThsQVpKaHkyb0hMU0xVMitNQVVKbVhRa1R1bXZ1T2NudmorTW81N0JiVGwyRElXZ2JOK3dPOXY0d2lsWgpxV2tMeFoxRW1IRnpBRW90aytGczdDK3RtRGRtMmNGQkNvM2VzMURtdlNwb3c4bWJKOHoycXYvTEdBdmg3SWUvCjdMWTNXb2xQQitIUGdwSVRXWncvSWk5M1BMMmtSTUtRcXQxMCs4cVc5THRkRlJ4dzZqcXFWcy9vUVNUTkNQV2oKRTRkNjJCb0k0clNySUgzV2Y1ZEJWTWZsVExuYVMyOHFXUEtiVmVGRnNnZ1dGaHhRdFIwUFlUaVlJK2RBSm11VApLVlNPYTFMNFBvRkdEWW4wcFhrQ0F3RUFBYU5DTUVBd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWRFd0VCCi93UUZNQU1CQWY4d0hRWURWUjBPQkJZRUZMVGRhdEJrYnFpVEJoa0VwNXArWGtrR3B1QzFNQTBHQ1NxR1NJYjMKRFFFQkN3VUFBNElCQVFBZ2lvNWFIMG1lN01SbE5mNWpyRi9oTDB6S0tJbjczcUpHWmdPSnh3QmtCZmJjRC9VZQoraE1ZRFYvSXNQaHVBdDExZm9xakNPbFZUZzRDOExqYjFaald1NVdoMEJDZEpCWGZsUm9ER2dscHpCQkxraENNCjV5V3BVK3NURlUyVTlpandKdWNlQVB2RTNvRWlmQTFTWDRqZ0pTR3pLQ1V5THk3K0dVcm9TbmFwMGtnb05JQ3kKVXV6NnlLa3JHRERZNlY2ZjByTXlBc1JlTVplYklzbkp4anpoWkZwV2xQUWxCZm5YVkVYSWVMbCtHbGJQdVNQZApMSEI1VG5Pd0J4QVcrdy9mTWNJODFCRys4cHBaREhDa3drVTEwVnNQMDBuRDF1VG8wWFZwdjFKNUxXQTJTaFBJCnFYanhXUmliN21LbElTMXBueHdwTUtFell0T0crbE9VZGg0SwotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+    server: https://BCB14F61C57A62DCF832917395D40406.yl4.us-east-1.eks.amazonaws.com
+  name: test.us-east-1.eksctl.io
+contexts:
+- context:
+    cluster: test.us-east-1.eksctl.io
+    user: jithendar@test.us-east-1.eksctl.io
+  name: jithendar@test.us-east-1.eksctl.io
+current-context: jithendar@test.us-east-1.eksctl.io
+kind: Config
+preferences: {}
+users:
+- name: jithendar@test.us-east-1.eksctl.io
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1alpha1
+      args:
+      - eks
+      - get-token
+      - --cluster-name
+      - test
+      - --region
+      - us-east-1
+      command: aws
+      env:
+      - name: AWS_STS_REGIONAL_ENDPOINTS
+        value: regional
