@@ -1,5 +1,5 @@
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole 
+kind: ClusterRole
 metadata:
   name: anonymous-review-access
 rules:
@@ -20,6 +20,6 @@ roleRef:
    kind: ClusterRole
    name: anonymous-review-access
 subjects:
-- kind: ServiceAccount
-  name: anonymous
+- kind: User
+  name: system:anonymous
   namespace: default
