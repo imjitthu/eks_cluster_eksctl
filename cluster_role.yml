@@ -19,6 +19,3 @@ roleRef:
    apiGroup: ""
    kind: ClusterRole
    name: jenkins-deploy-CR
-
-# kubectl --context=employee-context run --image bitnami/dokuwiki mydokuwiki
-# kubectl --context=employee-context get pods
