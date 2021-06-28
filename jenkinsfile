@@ -36,7 +36,9 @@ pipeline {
         stage ('Install Web UI') {
             when {expression {params.EKS_Cluster == 'Install Web UI'}}
             steps {
+                //https://github.com/kubernetes/dashboard
                 sh "kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml"
+                sh "kubectl proxy"
             }
         }
         stage ('Installing DB and Cache Components') {
