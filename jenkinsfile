@@ -22,9 +22,7 @@ pipeline {
                 expression {params.EKS_Cluster == 'Delete'}
             }
             steps {
-                sh '''
-                eksctl delete cluster -f cluster.yml
-                '''
+                sh "eksctl delete cluster -f cluster.yml"
             }
         }
         stage ('Installing DB and Cache Components') {
