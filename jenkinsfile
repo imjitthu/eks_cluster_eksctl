@@ -39,7 +39,7 @@ pipeline {
             steps {
                 //https://github.com/kubernetes/dashboard
                 sh "kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml"
-                sh "kubectl proxy"
+                //sh "kubectl proxy"
                 //Now access Dashboard at
                 //http://lab.jithendar.com:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
             }
