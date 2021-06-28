@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cart
+  labels:
+    app: cart
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cart
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      annotations:
+        co.elastic.logs/enabled: "true"
+        co.elastic.logs/json.keys_under_root: "true"
+      labels:
+        app: cart
+    spec:
+      containers:
+        - name: cart
+          image: jithendar/cart:image_tag
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: 500m
+              memory: 100Mi
+            limits:
+              cpu: 1
+              memory: 200Mi
+          env:
+            - name: REDIS_HOST
+              value: "redis-master"
+            - name: CATALOGUE_HOST
+              value: "catalogue"
+            - name: CATALOGUE_PORT
+              value: "8080"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cart
+spec:
+  selector:
+    app: cart
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+# ---
+# apiVersion: autoscaling/v1
+# kind: HorizontalPodAutoscaler
+# metadata:
+#   name: cart
+# spec:
+#   scaleTargetRef:
+#     apiVersion: apps/v1
+#     kind: Deployment
+#     name: cart
+#   minReplicas: 1
+#   maxReplicas: 10
+#   targetCPUUtilizationPercentage: 50
+# ---
+# apiVersion: autoscaling.k8s.io/v1
+# kind: VerticalPodAutoscaler
+# metadata:
+#   name: cart
+# spec:
+#   targetRef:
+#     apiVersion: "apps/v1"
+#     kind:       Deployment
+#     name:       cart
+#   updatePolicy:
+#     updateMode: "Off"
+#     #updateMode: "Auto"

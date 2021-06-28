@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment
+  labels:
+    app: payment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payment
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      annotations:
+        co.elastic.logs/enabled: "true"
+      labels:
+        app: payment
+    spec:
+      containers:
+        - name: payment
+          image: jithendar/payment:image_tag
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: 500m
+              memory: 100Mi
+            limits:
+              cpu: 1
+              memory: 200Mi
+          env:
+            - name: CART_HOST
+              value: cart
+            - name: USER_HOST
+              value: user
+            - name: AMQP_HOST
+              value: rabbitmq
+            - name: AMQP_USER
+              value: roboshop
+            - name: AMQP_PASS
+              value: roboshop123
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: payment
+spec:
+  selector:
+    app: payment
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+# ---
+# apiVersion: autoscaling/v1
+# kind: HorizontalPodAutoscaler
+# metadata:
+#   name: cart
+# spec:
+#   scaleTargetRef:
+#     apiVersion: apps/v1
+#     kind: Deployment
+#     name: cart
+#   minReplicas: 1
+#   maxReplicas: 10
+#   targetCPUUtilizationPercentage: 50
+# ---
+# apiVersion: autoscaling.k8s.io/v1
+# kind: VerticalPodAutoscaler
+# metadata:
+#   name: payment
+# spec:
+#   targetRef:
+#     apiVersion: "apps/v1"
+#     kind:       Deployment
+#     name:       payment
+#   updatePolicy:
+#     updateMode: "Off"
+#     #updateMode: "Auto"
