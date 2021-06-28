@@ -3,13 +3,21 @@ pipeline {
     agent any
 
     parameters {
-        choice(name: 'EKS_Cluster', choices: ['Create', 'Delete', 'Install DB & Cache', 'Install Components', 'Install VPA'], description: 'Pick option')
+        choice(name: 'EKS_Cluster', 
+        choices: [
+            'Create cluster', 'Delete', 
+            'Install DB & Cache', 
+            'Install Components', 
+            'Install Monitoring tools', 
+            'Install VPA'
+            ], 
+        description: 'Pick option')
                 }
 
     stages {
         stage ('Creating Eks Cluster') {
             when {
-                expression {params.EKS_Cluster == 'Create'}
+                expression {params.EKS_Cluster == 'Create cluster'}
             }
             steps {
                 //sh "sh iam-authenticator-eks.sh"
@@ -36,12 +44,19 @@ pipeline {
             sh "helm install mongodb bitnami/mongodb --set auth.enabled=false"
             sh "helm install rabbitmq bitnami/rabbitmq"
             sh "helm install mysql stable/mysql"
-            // sh "helm repo add prometheus-community https://prometheus-community.github.io/helm-charts"
-            // sh "helm repo add elastic https://helm.elastic.co"
-            // sh "helm install prometheus prometheus-community/kube-prometheus-stack"
-            // sh "helm install grafana stable/grafana"
-            //sh "helm install filebeat elastic/filebeat"
-            //sh "kubectl run workstation --image=jithendar/workstation:2.0 sleep 100000"
+            }
+        }
+        stage ('Install Prometheus & Grafana') {
+            when {
+                expression {params.EKS_Cluster == 'Install Monitoring tools'}
+            }
+            steps {
+            sh "helm repo add prometheus-community https://prometheus-community.github.io/helm-charts"
+            sh "helm repo add elastic https://helm.elastic.co"
+            sh "helm install prometheus prometheus-community/kube-prometheus-stack"
+            sh "helm install grafana stable/grafana"
+            sh "helm install filebeat elastic/filebeat"
+            sh "kubectl run workstation --image=jithendar/workstation:2.0 sleep 100000"
             }
         }
         stage ('Installing VPA') {
