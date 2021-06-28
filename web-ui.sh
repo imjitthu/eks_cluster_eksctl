@@ -9,8 +9,8 @@ msgstopped="Kubernetes Dashboard stopped"
 case $1 in
 start)
    kubectl apply -f $dashboard_yaml >/dev/null 2>&1
-   kubectl apply -f ~/dashboard/dashboard-admin.yaml >/dev/null 2>&1
-   kubectl apply -f ~/dashboard/dashboard-read-only.yaml >/dev/null 2>&1
+   kubectl apply -f dashboard-admin.yaml >/dev/null 2>&1
+   kubectl apply -f dashboard-read-only.yaml >/dev/null 2>&1
 
    if [ $count = 0 ]; then
       nohup $cmd >/dev/null 2>&1 &
