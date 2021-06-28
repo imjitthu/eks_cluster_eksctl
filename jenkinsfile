@@ -37,12 +37,9 @@ pipeline {
         stage ('Install Web UI') {
             when {expression {params.EKS_Cluster == 'Install Web UI'}}
             steps {
-                sh "sh web-ui.sh"
-                sh "dashboard start"
-                sh "dashboard status"
+            sh "kubectl apply -f web-ui.yml"
                 //https://github.com/kubernetes/dashboard
                 //sh "kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml"
-                //sh "kubectl proxy"
                 //Now access Dashboard at
                 //http://lab.jithendar.com:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
             }
