@@ -39,6 +39,7 @@ pipeline {
             steps {
                 sh "sh web-ui.sh"
                 sh "dashboard start"
+                sh "dashboard status"
                 //https://github.com/kubernetes/dashboard
                 //sh "kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml"
                 //sh "kubectl proxy"
