@@ -14,6 +14,7 @@ pipeline {
             steps {
                 sh "eksctl create cluster -f cluster.yml"
                 sh "kubectl apply -f role.yml"
+                sh "kubectl apply -f metrics_server.yaml"
             }
         }
         stage ('Deleting Eks Cluster') {
@@ -49,7 +50,6 @@ pipeline {
                 expression {params.EKS_Cluster == 'Install VPA'}
             }
             steps {
-            sh "kubectl apply -f metrics_server.yaml"
             git 'https://github.com/kubernetes/autoscaler.git'
             sh "sh vertical-pod-autoscaler/hack/vpa-up.sh"
             }
