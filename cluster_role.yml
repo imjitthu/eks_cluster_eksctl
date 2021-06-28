@@ -3,7 +3,7 @@ kind: ClusterRole
 metadata:
   name: jenkins-deploy-CR
 rules:
-- apiGroups: ["", "extensions", "apps"]
+- apiGroups: ["", "extensions", "apps", "autoscaling"]
   resources: ["*"]
   verbs: ["*"]
 ---
