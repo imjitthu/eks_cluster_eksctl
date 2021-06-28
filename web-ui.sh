@@ -2,15 +2,15 @@
 showtoken=1
 cmd="kubectl proxy"
 count=`pgrep -cf "$cmd"`
-dashboard_yaml="https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml"
+dashboard_yml="https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yml"
 msgstarted="-e Kubernetes Dashboard \e[92mstarted\e[0m"
 msgstopped="Kubernetes Dashboard stopped"
 
 case $1 in
 start)
-   kubectl apply -f $dashboard_yaml >/dev/null 2>&1
-   kubectl apply -f dashboard-admin.yaml >/dev/null 2>&1
-   kubectl apply -f dashboard-read-only.yaml >/dev/null 2>&1
+   kubectl apply -f $dashboard_yml >/dev/null 2>&1
+   kubectl apply -f dashboard-admin.yml >/dev/null 2>&1
+   kubectl apply -f dashboard-read-only.yml >/dev/null 2>&1
 
    if [ $count = 0 ]; then
       nohup $cmd >/dev/null 2>&1 &
@@ -25,9 +25,9 @@ start)
    if [ $count -gt 0 ]; then
       kill -9 $(pgrep -f "$cmd")
    fi
-   kubectl delete -f $dashboard_yaml >/dev/null 2>&1
-   kubectl delete -f ~/dashboard/dashboard-admin.yaml >/dev/null 2>&1
-   kubectl delete -f ~/dashboard/dashboard-read-only.yaml >/dev/null 2>&1
+   kubectl delete -f $dashboard_yml >/dev/null 2>&1
+   kubectl delete -f ~/dashboard/dashboard-admin.yml >/dev/null 2>&1
+   kubectl delete -f ~/dashboard/dashboard-read-only.yml >/dev/null 2>&1
    echo $msgstopped
    ;;
 
