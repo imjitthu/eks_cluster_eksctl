@@ -63,7 +63,7 @@ fi
 
 #chmod +x ~/dashboard/dashboard.sh
 
-sudo ln -s ~/dashboard/dashboard.sh /usr/local/bin/dashboard
+sudo ln -s ~/dashboard/dashboard.sh /bin/dashboard
 
 #dashboard start
 
