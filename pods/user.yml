@@ -52,29 +52,29 @@ spec:
     - protocol: TCP
       port: 8080
       targetPort: 8080
-# ---
-# apiVersion: autoscaling/v1
-# kind: HorizontalPodAutoscaler
-# metadata:
-#   name: cart
-# spec:
-#   scaleTargetRef:
-#     apiVersion: apps/v1
-#     kind: Deployment
-#     name: cart
-#   minReplicas: 1
-#   maxReplicas: 10
-#   targetCPUUtilizationPercentage: 50
 ---
-apiVersion: autoscaling.k8s.io/v1
-kind: VerticalPodAutoscaler
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
 metadata:
-  name: user
+  name: cart
 spec:
-  targetRef:
-    apiVersion: "apps/v1"
-    kind:       Deployment
-    name:       user
-  updatePolicy:
-    updateMode: "Off"
-    #updateMode: "Auto"
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: cart
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 50
+# ---
+# apiVersion: autoscaling.k8s.io/v1
+# kind: VerticalPodAutoscaler
+# metadata:
+#   name: user
+# spec:
+#   targetRef:
+#     apiVersion: "apps/v1"
+#     kind:       Deployment
+#     name:       user
+#   updatePolicy:
+#     updateMode: "Off"
+#     #updateMode: "Auto"
