@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: workstation
+  name: workstation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: workstation
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: workstation
+    spec:
+      containers:
+      - image: jithendar/workstation:2.0
+        name: workstation
+        
+        resources:
+            requests:
+              cpu: 500m
+              memory: 100Mi
+            limits:
+              cpu: 1
+              memory: 200Mi
+status: {}
