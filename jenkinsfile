@@ -14,7 +14,7 @@ pipeline {
             steps {
                 sh "sh iam-authenticator-eks.sh"
                 //sh "eksctl create cluster -f cluster.yml"
-                sh "kubectl apply -f role.yml"
+                sh "kubectl apply -f cluster_role.yml"
                 sh "kubectl apply -f metrics_server.yaml"
             }
         }
