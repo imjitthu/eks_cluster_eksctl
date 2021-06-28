@@ -57,12 +57,16 @@ pipeline {
                expression {params.EKS_Cluster == 'Install Components'}
            }
            steps {
-            build 'Rs-Docker/cart'
-            build 'Rs-Docker/catalogue'
-            build 'Rs-Docker/shipping'
-            build 'Rs-Docker/user'
-            build 'Rs-Docker/payment'
-            build 'Rs-Docker/frontend'
+            script {
+                kubernetesDeploy(configs: "pod.yml", kubeconfigId: "kubeconfig_deploy")
+                kubernetesDeploy(configs: "pod.yml", kubeconfigId: "kubeconfig_deploy")
+                kubernetesDeploy(configs: "pod.yml", kubeconfigId: "kubeconfig_deploy")
+                kubernetesDeploy(configs: "pod.yml", kubeconfigId: "kubeconfig_deploy")
+                kubernetesDeploy(configs: "pod.yml", kubeconfigId: "kubeconfig_deploy")
+                kubernetesDeploy(configs: "pod.yml", kubeconfigId: "kubeconfig_deploy")
+                kubernetesDeploy(configs: "pod.yml", kubeconfigId: "kubeconfig_deploy")
+                }
+                }
            }
        } 
     }
