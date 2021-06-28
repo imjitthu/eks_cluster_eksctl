@@ -1,4 +1,4 @@
-apiVersion: apiVersion: v1
+apiVersion: v1
 kind: Pod
 metadata:
   name: workstation
@@ -8,10 +8,13 @@ spec:
   containers:
   - name: workstation
     image: jithendar/workstation:2.0
+    args:
+    - sleep
+    - "10000"
     resources:
       limits:
         memory: "128Mi"
         cpu: "500m"
     ports:
-      - containerPort: <Port>
+      - containerPort: 8085
 
