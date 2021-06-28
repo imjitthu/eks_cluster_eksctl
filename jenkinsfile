@@ -9,7 +9,8 @@ pipeline {
             'Create cluster', 
             'Delete cluster', 
             'Install DB & Cache', 
-            'Install Components', 
+            'Install Components',
+            'Install Web UI', 
             'Install Monitoring tools', 
             'Install VPA'
         ], 
@@ -30,6 +31,12 @@ pipeline {
             when {expression {params.EKS_Cluster == 'Delete cluster'}}
             steps {
                 sh "eksctl delete cluster -f cluster.yml"
+            }
+        }
+        stage ('Install Web UI') {
+            when {expression {params.EKS_Cluster == 'Install Web UI'}}
+            steps {
+                sh "kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml"
             }
         }
         stage ('Installing DB and Cache Components') {
