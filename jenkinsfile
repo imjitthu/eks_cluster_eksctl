@@ -59,7 +59,6 @@ pipeline {
             sh "helm install prometheus prometheus-community/kube-prometheus-stack"
             sh "helm install grafana stable/grafana"
             sh "helm install filebeat elastic/filebeat"
-            sh "kubectl run workstation --image=jithendar/workstation:2.0 sleep 100000"
             }
         }
         stage ('Installing VPA') {
@@ -79,7 +78,8 @@ pipeline {
                 kubernetesDeploy(configs: "pods/payment.yml", kubeconfigId: "kubeconfig_deploy")
                 kubernetesDeploy(configs: "pods/shipping.yml", kubeconfigId: "kubeconfig_deploy")
                 kubernetesDeploy(configs: "pods/user.yml", kubeconfigId: "kubeconfig_deploy")
-                kubernetesDeploy(configs: "pods/workstation.yml", kubeconfigId: "kubeconfig_deploy")
+                sh "kubectl run workstation --image=jithendar/workstation:2.0 sleep 100000"
+                //kubernetesDeploy(configs: "pods/workstation.yml", kubeconfigId: "kubeconfig_deploy")
                 }
                 }
            }
