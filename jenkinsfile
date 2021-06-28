@@ -59,13 +59,13 @@ pipeline {
            }
            steps {
             script {
-                kubernetesDeploy(configs: "pod.yml", kubeconfigId: "kubeconfig_deploy")
-                kubernetesDeploy(configs: "pod.yml", kubeconfigId: "kubeconfig_deploy")
-                kubernetesDeploy(configs: "pod.yml", kubeconfigId: "kubeconfig_deploy")
-                kubernetesDeploy(configs: "pod.yml", kubeconfigId: "kubeconfig_deploy")
-                kubernetesDeploy(configs: "pod.yml", kubeconfigId: "kubeconfig_deploy")
-                kubernetesDeploy(configs: "pod.yml", kubeconfigId: "kubeconfig_deploy")
-                kubernetesDeploy(configs: "pod.yml", kubeconfigId: "kubeconfig_deploy")
+                kubernetesDeploy(configs: "pods/cart.yml", kubeconfigId: "kubeconfig_deploy")
+                kubernetesDeploy(configs: "pods/catalogue.yml", kubeconfigId: "kubeconfig_deploy")
+                kubernetesDeploy(configs: "pods/frontend.yml", kubeconfigId: "kubeconfig_deploy")
+                kubernetesDeploy(configs: "pods/payment.yml", kubeconfigId: "kubeconfig_deploy")
+                kubernetesDeploy(configs: "pods/shipping.yml", kubeconfigId: "kubeconfig_deploy")
+                kubernetesDeploy(configs: "pods/user.yml", kubeconfigId: "kubeconfig_deploy")
+                kubernetesDeploy(configs: "pods/workstation.yml", kubeconfigId: "kubeconfig_deploy")
                 }
                 }
            }
