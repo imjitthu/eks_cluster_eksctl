@@ -2,7 +2,7 @@
 showtoken=1
 cmd="kubectl proxy"
 count=`pgrep -cf "$cmd"`
-dashboard_yml="https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yml"
+dashboard_yml="https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml"
 msgstarted="-e Kubernetes Dashboard \e[92mstarted\e[0m"
 msgstopped="Kubernetes Dashboard stopped"
 
