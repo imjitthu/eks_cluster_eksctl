@@ -18,28 +18,22 @@ pipeline {
 
     stages {
         stage ('Creating Eks Cluster') {
-            when {
-                expression {params.EKS_Cluster == 'Create cluster'}
-            }
+            when {expression {params.EKS_Cluster == 'Create cluster'}}
             steps {
                 sh "sh iam-authenticator-eks.sh"
                 sh "eksctl create cluster -f cluster.yml"
                 sh "kubectl apply -f cluster_role.yml"
                 sh "kubectl apply -f metrics_server.yaml"
+                }
             }
-        }
         stage ('Deleting Eks Cluster') {
-            when {
-                expression {params.EKS_Cluster == 'Delete cluster'}
-            }
+            when {expression {params.EKS_Cluster == 'Delete cluster'}}
             steps {
                 sh "eksctl delete cluster -f cluster.yml"
             }
         }
         stage ('Installing DB and Cache Components') {
-            when {
-                expression {params.EKS_Cluster == 'Install DB & Cache'}
-            }
+            when {expression {params.EKS_Cluster == 'Install DB & Cache'}}
             steps {
             sh "helm repo add stable https://charts.helm.sh/stable"
             sh "helm install redis stable/redis --set usePassword=false"
@@ -49,9 +43,7 @@ pipeline {
             }
         }
         stage ('Install Prometheus & Grafana') {
-            when {
-                expression {params.EKS_Cluster == 'Install Monitoring tools'}
-            }
+            when {expression {params.EKS_Cluster == 'Install Monitoring tools'}}
             steps {
             sh "helm repo add prometheus-community https://prometheus-community.github.io/helm-charts"
             sh "helm repo add elastic https://helm.elastic.co"
@@ -62,18 +54,14 @@ pipeline {
             }
         }
         stage ('Installing VPA') {
-            when {
-                expression {params.EKS_Cluster == 'Install VPA'}
-            }
+            when {expression {params.EKS_Cluster == 'Install VPA'}}
             steps {
             git 'https://github.com/kubernetes/autoscaler.git'
             sh "sh vertical-pod-autoscaler/hack/vpa-up.sh"
             }
        }
        stage ('Installing Robosho Components') {
-           when {
-               expression {params.EKS_Cluster == 'Install Components'}
-           }
+           when {expression {params.EKS_Cluster == 'Install Components'}}
            steps {
             script {
                 kubernetesDeploy(configs: "pods/cart.yml", kubeconfigId: "kubeconfig_deploy")
