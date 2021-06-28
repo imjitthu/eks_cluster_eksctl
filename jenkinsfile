@@ -4,15 +4,17 @@ pipeline {
 
     parameters {
         choice(name: 'EKS_Cluster', 
-        choices: [
-            'Create cluster', 'Delete', 
+        choices: 
+        [
+            'Create cluster', 
+            'Delete cluster', 
             'Install DB & Cache', 
             'Install Components', 
             'Install Monitoring tools', 
             'Install VPA'
-            ], 
-        description: 'Pick option')
-                }
+        ], 
+        description: 'Pick Option')
+        }
 
     stages {
         stage ('Creating Eks Cluster') {
@@ -28,7 +30,7 @@ pipeline {
         }
         stage ('Deleting Eks Cluster') {
             when {
-                expression {params.EKS_Cluster == 'Delete'}
+                expression {params.EKS_Cluster == 'Delete cluster'}
             }
             steps {
                 sh "eksctl delete cluster -f cluster.yml"
