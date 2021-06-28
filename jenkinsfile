@@ -39,10 +39,6 @@ pipeline {
             steps {
                 sh "kubectl apply -f web-ui.yml"
                 sh "kubectl apply -f dashboard-admin.yml"
-                //https://github.com/kubernetes/dashboard
-                //sh "kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml"
-                //Now access Dashboard at
-                //http://lab.jithendar.com:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
             }
         }
         stage ('Installing DB and Cache Components') {
