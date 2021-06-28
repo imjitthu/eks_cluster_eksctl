@@ -38,6 +38,7 @@ pipeline {
             when {expression {params.EKS_Cluster == 'Install Web UI'}}
             steps {
                 sh "kubectl apply -f web-ui.yml"
+                sh "kubectl apply -f dashboard-admin.yml"
                 //https://github.com/kubernetes/dashboard
                 //sh "kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml"
                 //Now access Dashboard at
