@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: jenkins-CRB
+subjects:
+- kind: User
+  name: jenkins:jenkins
+  apiGroup: ""
+roleRef:
+   apiGroup: ""
+   kind: ClusterRole
+   name: admin
