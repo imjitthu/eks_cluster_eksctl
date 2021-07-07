@@ -8,7 +8,7 @@ pipeline {
         [
             'Create cluster', 
             'Delete cluster', 
-            'Configure Cluster'
+            'Configure Cluster',
             'Install Web UI', 
             'Install VPA'
         ], 
