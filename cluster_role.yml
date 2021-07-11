@@ -13,7 +13,7 @@ metadata:
   name: jenkins-Deployments-Binding
 subjects:
 - kind: User
-  name: jithendar
+  name: jithendar@test.us-east-1.eksctl.io
   apiGroup: ""
 roleRef:
    apiGroup: ""
