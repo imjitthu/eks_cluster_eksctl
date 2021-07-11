@@ -38,6 +38,7 @@ pipeline {
             when {expression {params.EKS_Cluster == 'Configure cluster'}}
             steps {
                 sh "sh iam-authenticator-eks.sh"
+                sh "kubectl apply -f jenkins.sa.yml"
                 //sh "kubectl apply -f cluster_role.yml"
                 sh "kubectl apply -f cluster_role_binding.yml"
                 sh "kubectl apply -f metrics_server.yaml"
