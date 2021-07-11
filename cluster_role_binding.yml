@@ -9,4 +9,4 @@ subjects:
 roleRef:
    apiGroup: ""
    kind: ClusterRole
-   name: admin
+   name: cluster-admin
