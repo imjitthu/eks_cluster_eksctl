@@ -8,7 +8,7 @@ pipeline {
         [
             'Create cluster', 
             'Delete cluster', 
-            'Configure Cluster',
+            'Configure cluster',
             'Install Web UI', 
             'Install VPA'
         ], 
@@ -17,13 +17,25 @@ pipeline {
 
     stages {
         stage ('Creating Eks Cluster') {
-            when {expression {params.EKS_Cluster == 'Create cluster'}}
-            steps {
-                sh "eksctl create cluster -f cluster.yml"
+            when {
+            anyOf {
+                expression {params.EKS_Cluster == 'Create cluster'}
+                expression {params.EKS_Cluster == 'Delete cluster'}
                 }
+                }
+            steps {
+            script {
+            if params.EKS_Cluster == 'Create cluster' {
+                sh "eksctl create cluster -f cluster.yml" 
+            }
+            if params.EKS_Cluster == 'Delete cluster' {
+                sh "eksctl delete cluster -f cluster.yml" 
+            }
+            }
+            }
             }
         stage ('Configure Cluster') {
-            when {expression {params.EKS_Cluster == 'Create cluster'}}
+            when {expression {params.EKS_Cluster == 'Configure cluster'}}
             steps {
                 sh "sh iam-authenticator-eks.sh"
                 //sh "kubectl apply -f cluster_role.yml"
@@ -31,12 +43,6 @@ pipeline {
                 sh "kubectl apply -f metrics_server.yaml"
                 }
             }
-        stage ('Deleting Eks Cluster') {
-            when {expression {params.EKS_Cluster == 'Delete cluster'}}
-            steps {
-                sh "eksctl delete cluster -f cluster.yml"
-            }
-        }
         stage ('Install Web UI') {
             when {expression {params.EKS_Cluster == 'Install Web UI'}}
             steps {
