@@ -16,24 +16,24 @@ pipeline {
         }
 
     stages {
-        stage ('Creating Eks Cluster') {
-            when {
-                anyOf {
-                    expression {params.EKS_Cluster == 'Create cluster'}
-                    expression {params.EKS_Cluster == 'Delete cluster'}
-                    }
-                }
-            steps {
-                script {
-                    if params.EKS_Cluster == 'Create cluster' {
-                        sh "eksctl create cluster -f cluster.yml" 
-                    }
-                    if params.EKS_Cluster == 'Delete cluster' {
-                        sh "eksctl delete cluster -f cluster.yml" 
-                }
-            }
-            }
-            }
+        // stage ('Creating Eks Cluster') {
+        //     when {
+        //         anyOf {
+        //             expression {params.EKS_Cluster == 'Create cluster'}
+        //             expression {params.EKS_Cluster == 'Delete cluster'}
+        //             }
+        //         }
+        //     steps {
+        //         script {
+        //             if params.EKS_Cluster == 'Create cluster' {
+        //                 sh "eksctl create cluster -f cluster.yml" 
+        //             }
+        //             if params.EKS_Cluster == 'Delete cluster' {
+        //                 sh "eksctl delete cluster -f cluster.yml" 
+        //             }
+        //         }   
+        //     }
+        //     }
         stage ('Configure Cluster') {
             when {expression {params.EKS_Cluster == 'Configure cluster'}}
             steps {
