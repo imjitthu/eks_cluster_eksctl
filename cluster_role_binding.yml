@@ -4,7 +4,7 @@ metadata:
   name: jenkins-Deployments_Binding
 subjects:
 - kind: User
-  name: jenkins:jenkins
+  name: jithendar
   apiGroup: ""
 roleRef:
    apiGroup: ""
