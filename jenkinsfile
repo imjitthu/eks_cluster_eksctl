@@ -25,10 +25,10 @@ pipeline {
                 }
             steps {
                 script {
-                    if params.EKS_Cluster == 'Create cluster' {
+                    if (params.EKS_Cluster == 'Create cluster') {
                         sh "eksctl create cluster -f cluster.yml" 
                     }
-                    if params.EKS_Cluster == 'Delete cluster' {
+                    if (params.EKS_Cluster == 'Delete cluster') {
                         sh "eksctl delete cluster -f cluster.yml" 
                     }
                 }   
