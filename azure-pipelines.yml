@@ -15,15 +15,17 @@ pool:
 steps:
 - script: |
     terraform init
-    terraform plan
-    terraform apply -auto-approve
-# uname -a
-# uname -i
-# terraform --help
-# ansible --help
-# aws --help
+  displayName: 'Terraform init'
 
-  displayName: 'Create EKS Cluster'
+steps:
+- script: |
+    terraform plan
+  displayName: 'Terraform plan'
+
+steps:
+- script: |
+    terraform apply -auto-approve
+  displayName: 'Creating EKS Cluster with Terraform'
 
 # - script: |
 #     echo Add other tasks to build, test, and deploy your project.
