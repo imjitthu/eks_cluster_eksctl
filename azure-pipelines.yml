@@ -4,8 +4,8 @@
 # https://aka.ms/yaml
 
 trigger:
-  branches:
-    - master
+  - master
+  # branches:
   #   include: [ "*" ] 
   # tags:
   #   include: [ "*" ]
