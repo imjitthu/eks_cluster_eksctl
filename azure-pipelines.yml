@@ -16,7 +16,7 @@ steps:
   displayName: 'terraform plan'
 
 - script: |
-    terraform apply -auto-approve
+    terraform destroy -auto-approve
   displayName: 'Create EKS Cluster'
 
 
