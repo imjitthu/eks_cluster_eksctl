@@ -13,10 +13,9 @@ pool:
 
 steps:
 - script: |
-    id
-    echo Hello, world!
     pwd; ls
-    ifconfig
+    terraform init
+    terraform plan
 # uname -a
 # uname -i
 # terraform --help
