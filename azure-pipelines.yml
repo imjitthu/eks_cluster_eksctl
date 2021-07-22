@@ -10,7 +10,9 @@ pool:
   vmImage: Ubuntu Latest
 
 steps:
-- script: echo Hello, world!
+- script: |
+    echo Hello, world!
+    eksctl --help
   displayName: 'Run a one-line script'
 
 - script: |
