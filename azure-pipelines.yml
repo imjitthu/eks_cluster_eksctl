@@ -12,7 +12,8 @@ pool:
 steps:
 - script: |
     echo Hello, world!
-    eksctl --help
+    uname -a
+    uname -i
   displayName: 'Run a one-line script'
 
 - script: |
