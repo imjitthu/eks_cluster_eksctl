@@ -11,15 +11,15 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-#pool:
-#  vmImage: Ubuntu Latest
-
 steps:
 - script: |
     echo Hello, world!
     uname -a
     uname -i
     terraform --help
+    ansible --help
+    aws --help
+
   displayName: 'Run a multi-line script'
 
 - script: |
