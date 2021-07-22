@@ -3,8 +3,8 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-  - master
+#trigger:
+#  - master
   # branches:
   #   include: [ "*" ] 
   # tags:
@@ -15,17 +15,9 @@ pool:
 steps:
 - script: |
     terraform init
-  displayName: 'Terraform init'
-
-steps:
-- script: |
     terraform plan
-  displayName: 'Terraform plan'
-
-steps:
-- script: |
     terraform apply -auto-approve
-  displayName: 'Creating EKS Cluster with Terraform'
+  displayName: 'Create EKS Cluster'
 
 # - script: |
 #     echo Add other tasks to build, test, and deploy your project.
