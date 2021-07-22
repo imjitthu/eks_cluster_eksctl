@@ -13,6 +13,7 @@ pool:
 
 steps:
 - script: |
+    id
     echo Hello, world!
     pwd; ls
     ifconfig
