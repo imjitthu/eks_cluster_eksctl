@@ -5,9 +5,10 @@
 
 trigger:
   branches:
-    include: [ "*" ] 
-  tags:
-    include: [ "*" ]
+    - master
+  #   include: [ "*" ] 
+  # tags:
+  #   include: [ "*" ]
 pool:
   vmImage: 'ubuntu-latest'
 
