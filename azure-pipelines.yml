@@ -14,11 +14,13 @@ pool:
 steps:
 - script: |
     echo Hello, world!
-    uname -a
-    uname -i
-    terraform --help
-    ansible --help
-    aws --help
+    pwd; ls
+    ifconfig
+# uname -a
+# uname -i
+# terraform --help
+# ansible --help
+# aws --help
 
   displayName: 'Run a multi-line script'
 
