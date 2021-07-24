@@ -12,12 +12,12 @@ steps:
   displayName: 'terraform init'
 
 - script: |
-    terraform plan
-  displayName: 'terraform plan'
+    terraform validate
+  displayName: 'terraform validate'
 
 - script: |
-    terraform apply -auto-approve
-  displayName: 'Create EKS Cluster'
+    terraform plan
+  displayName: 'terraform plan'
 
 
 
