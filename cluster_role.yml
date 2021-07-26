@@ -8,7 +8,7 @@ kind: ClusterRole
 metadata:
   name: azdevops_role
 rules:
-- apiGroups: ["", "extensions", "apps", "autoscaling"]
+- apiGroups: ["*", "extensions", "apps", "autoscaling"]
   resources: ["*"]
   verbs: ["*"]
 ---
@@ -16,10 +16,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: azdevops_role_binding
-# subjects:
-# - kind: User
-#   name: jithendar
-#   apiGroup: ""
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -33,3 +29,8 @@ subjects:
 #kubectl config view --minify -o jsonpath={.clusters[0].cluster.server}
 #kubectl get serviceAccounts azdevops -o=jsonpath={.secrets[*].name}
 #kubectl get secret azdevops-token-9hvl9 -o json
+
+# subjects:
+# - kind: User
+#   name: jithendar
+#   apiGroup: ""
