@@ -29,16 +29,3 @@ subjects:
   - kind: User
     name: system:serviceaccount:default:azdevops
     apiGroup: ""
-
-#kubectl config view --minify -o jsonpath={.clusters[0].cluster.server}
-#kubectl get serviceAccounts azdevops -o=jsonpath={.secrets[*].name}
-#kubectl get secret azdevops-token-24spl -o json
-
-kubectl delete ClusterRole azdevops_role
-kubectl delete ClusterRoleBinding azdevops_role_binding
-kubectl delete sa azdevops
-
-# subjects:
-# - kind: User
-#   name: system:serviceaccount:default:azdevops
-#   apiGroup: ""

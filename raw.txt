@@ -1,0 +1,19 @@
+#kubectl config view --minify -o jsonpath={.clusters[0].cluster.server}
+#kubectl get serviceAccounts azdevops -n kube-system -o=jsonpath={.secrets[*].name}
+#kubectl get secret azdevops-token-dgtfm -n kube-system -o json
+
+# kubectl delete ClusterRole azdevops_role
+# kubectl delete ClusterRoleBinding azdevops_role_binding
+# kubectl delete sa azdevops
+
+# subjects:
+# - kind: User
+#   name: system:serviceaccount:default:azdevops
+#   apiGroup: ""
+
+# $ kubectl apply -f - <<EOF
+# apiVersion: v1
+# kind: ServiceAccount
+# metadata:
+#   name: build-robot
+# EOF
