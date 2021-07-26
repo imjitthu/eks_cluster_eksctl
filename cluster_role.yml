@@ -25,12 +25,15 @@ subjects:
     name: azdevops
     namespace: default
     apiGroup: ""
+  - kind: User
+    name: system:serviceaccount:default:azdevops
+    apiGroup: ""
 
 #kubectl config view --minify -o jsonpath={.clusters[0].cluster.server}
 #kubectl get serviceAccounts azdevops -o=jsonpath={.secrets[*].name}
-#kubectl get secret azdevops-token-9hvl9 -o json
+#kubectl get secret azdevops-token-gxrht -o json
 
 # subjects:
 # - kind: User
-#   name: jithendar
+#   name: system:serviceaccount:default:azdevops
 #   apiGroup: ""
