@@ -8,7 +8,7 @@ kind: ClusterRole
 metadata:
   name: azdevops_role
 rules:
-- apiGroups: ["*", "extensions", "apps", "autoscaling"]
+- apiGroups: ["", "extensions", "apps", "autoscaling"]
   resources: ["*"]
   verbs: ["*"]
 ---
@@ -22,7 +22,7 @@ roleRef:
   name: admin
 subjects:
   - kind: ServiceAccount
-    name: build-robot
+    name: azdevops
     namespace: default
     apiGroup: ""
 
