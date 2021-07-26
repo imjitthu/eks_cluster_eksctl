@@ -1,5 +1,6 @@
 apiVersion: v1
 kind: ServiceAccount
+namespace: kube-system
 metadata:
   name: azdevops
 ---
@@ -23,7 +24,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: azdevops
-    namespace: default
+    namespace: kube-system
     apiGroup: ""
   - kind: User
     name: system:serviceaccount:default:azdevops
@@ -31,7 +32,11 @@ subjects:
 
 #kubectl config view --minify -o jsonpath={.clusters[0].cluster.server}
 #kubectl get serviceAccounts azdevops -o=jsonpath={.secrets[*].name}
-#kubectl get secret azdevops-token-gxrht -o json
+#kubectl get secret azdevops-token-24spl -o json
+
+#kubectl delete ClusterRole azdevops_role
+#kubectl delete ClusterRoleBinding azdevops_role_binding
+#kubectl delete sa azdevops
 
 # subjects:
 # - kind: User
