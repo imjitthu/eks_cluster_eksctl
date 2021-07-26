@@ -29,3 +29,7 @@ subjects:
     name: build-robot
     namespace: default
     apiGroup: ""
+
+#kubectl config view --minify -o jsonpath={.clusters[0].cluster.server}
+#kubectl get serviceAccounts azdevops -o=jsonpath={.secrets[*].name}
+#kubectl get secret azdevops-token-9hvl9 -o json
