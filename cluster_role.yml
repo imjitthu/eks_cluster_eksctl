@@ -22,10 +22,12 @@ roleRef:
   kind: ClusterRole
   name: azdevops_role
 subjects:
-  - kind: ServiceAccount
-    name: azdevops
-    namespace: kube-system
+  - kind: Group
+    name: system:serviceaccounts
     apiGroup: ""
-  - kind: User
-    name: system:serviceaccount:default:azdevops
-    apiGroup: ""
+
+
+# - kind: ServiceAccount
+#   name: azdevops
+#   namespace: kube-system
+#   apiGroup: ""
