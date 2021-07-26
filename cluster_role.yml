@@ -10,8 +10,8 @@ metadata:
   name: azdevops_role
 rules:
 - apiGroups: ["", "extensions", "apps", "autoscaling"]
-  resources: ["*"]
-  verbs: ["*"]
+  resources: [""]
+  verbs: [""]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
